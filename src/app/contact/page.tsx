@@ -16,7 +16,7 @@ export default function ContactPage() {
       <div className="mx-auto max-w-4xl px-6 py-12 sm:px-12 sm:py-16 lg:px-20">
         <p className="font-sans-jp text-sm tracking-[0.15em] text-green uppercase">Contact</p>
         <h1 className="font-sans-jp mt-4 text-3xl leading-[1.5] font-bold text-iron sm:text-4xl">
-          お問い合わせ。
+          お問い合わせ
         </h1>
         <p className="font-sans-jp mt-6 max-w-2xl text-sm leading-loose text-iron-600 sm:text-base">
           施工相談・見積り依頼、採用に関するお問い合わせなど、お気軽にご連絡ください。

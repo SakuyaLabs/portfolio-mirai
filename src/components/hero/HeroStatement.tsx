@@ -26,7 +26,7 @@ export default function HeroStatement() {
       <h1 className="font-sans-jp mt-4 text-3xl leading-[1.5] font-bold text-iron sm:text-4xl lg:text-5xl">
         地域とともに、
         <br />
-        堅実な家づくりを。
+        堅実な家づくりを
       </h1>
       <p className="font-sans-jp mt-6 max-w-xl text-sm leading-loose text-iron-600 sm:text-base">
         新築・リフォーム・リノベーション。創業から15年、地域に根ざして家づくりをしてきました。

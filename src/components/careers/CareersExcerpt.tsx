@@ -11,7 +11,7 @@ export default function CareersExcerpt() {
         <div>
           <p className="font-sans-jp text-sm tracking-[0.15em] text-green-soft uppercase">Careers</p>
           <h2 className="font-sans-jp mt-3 text-2xl font-bold text-white-off sm:text-3xl">
-            一緒に働きませんか。
+            一緒に働きませんか
           </h2>
           <p className="font-sans-jp mt-3 max-w-md text-sm leading-relaxed text-white-off/70">
             現場スタッフ・施工管理を中心に募集しています。

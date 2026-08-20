@@ -42,7 +42,7 @@ export default function ContactForm() {
       <div className="rounded border border-iron/10 bg-white-soft p-6 sm:p-8">
         <p className="font-sans-jp text-sm tracking-[0.15em] text-green uppercase">Received</p>
         <h2 className="font-sans-jp mt-4 text-xl font-bold text-iron sm:text-2xl">
-          お問い合わせありがとうございます、{submitted.name}様。
+          お問い合わせありがとうございます、{submitted.name}様
         </h2>
 
         <dl className="font-sans-jp mt-6 space-y-2 border-t border-iron/10 pt-5 text-sm text-iron-600">
