@@ -54,7 +54,7 @@ export default function WorksExplorer({ items }: { items: WorksItem[] }) {
       {filteredItems.length > 0 ? (
         <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredItems.map((item) => (
-            <WorksCard key={item.id} item={item} />
+            <WorksCard key={item.id} item={item} headingLevel="h2" />
           ))}
         </ul>
       ) : (

@@ -83,5 +83,42 @@
 - ①〜④と同様、フッターに `Concept Project by SakuyaLabs` を常時表示する。
 - お問い合わせフォーム送信前後にも「これはポートフォリオ用のデモ相談です」旨を明示する。
 
-## 未確定・今後の判断事項
-- 施工事例の件数・カテゴリ内訳、お知らせの件数・内容、代表挨拶の具体的な文章は実装時に決定する。
+## 未確定・今後の判断事項（解決済み）
+- 施工事例：6件（新築2/リフォーム2/リノベーション2）で決定（`src/lib/works/data.ts`）。
+- お知らせ：4件で決定（`src/lib/news/data.ts`）。
+- 代表挨拶：代表取締役 未来 一郎の名義で、2段落の挨拶文で決定（`src/components/about/CompanyMessage.tsx`）。
+
+## Phase 5｜品質チェックの記録
+
+### レスポンシブ
+Chromeで実施。実測は1568px〜1920px幅のみ（④はる法律事務所のPhase 5と同じく、このセッションでは
+`resize_window`ツールが実際には機能しなかったため）。代わりにコード全体をgrepし、複数列グリッドが
+すべて`grid-cols-1`ベース＋`sm:`/`lg:`拡張のパターンに従っていること、固定`min-w`要素が存在しないことを
+確認した。CLAUDE.mdに④の反省点（`grid-cols-2`を無条件に使うと375px幅で入力欄が圧迫される）を
+実装ルールとして明記していたため、今回は実装時点から違反が発生しなかった。
+
+### アクセシビリティ
+Lighthouse Accessibility: **100/100**（TOP・施工事例・会社概要・採用情報・お知らせ一覧・
+お知らせ詳細・お問い合わせの計7ページで計測）。初回計測で`/works`と`/careers`が98/100
+（`heading-order`：h1の直後にh3が来て見出しレベルが飛んでいた）だったため修正した。
+原因は、`WorksCard`（施工事例カード）と`PositionsList`（募集職種カード）内の見出しが、
+TOPページの抜粋セクション（`h2`の下にネストされる想定でh3固定）と、単独ページ
+（`h1`の直後で中間の`h2`がない）の両方から呼ばれる共通コンポーネントだったこと。
+`WorksCard`は`headingLevel`propで呼び出し側から見出しレベルを指定できるようにし、
+単独ページ（`/works`）専用の`PositionsList`は直接`h2`に変更して解決した。
+
+### パフォーマンス
+Lighthouse Performance: **100/100**（`--throttling-method=provided`で計測。TOP: FCP 0.1s / LCP 0.1s、
+`/works`（クライアント側フィルタを持つページ）も同様に100、いずれもCLS 0）。
+デフォルトのシミュレーションスロットリングは使わず、①〜④のPhase 5で確立した実測ベースの
+計測方法（SakuyaLabs External Intelligence `PAT-004`）に最初から従った。
+
+### SEO
+Lighthouse SEO: **60/100**（全ページ共通）。唯一の失敗項目は`is-crawlable`で、①〜④と同じく
+意図的な設定（`robots: { index: false, follow: false }`）。それ以外（メタ情報、OGP画像の自動生成
+`opengraph-image.tsx`、見出し階層、CMS移行を想定したスキーマ設計）はすべて実装済み。
+④とは異なり、本案件の技術的な核心はSEO構造化データ（`LegalService`等）ではないため、
+JSON-LDは実装していない（docs/planning.md 技術スタックの方針通り）。
+
+### Best Practices
+Lighthouse Best Practices: **100/100**（全ページ共通）。
