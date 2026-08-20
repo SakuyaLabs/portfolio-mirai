@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* 株式会社ミライ工務店 デザインシステム（企画書 Phase 2 / CLAUDE.md 準拠）
+   コンセプト：堅実・誠実・奇をてらわない安定感 */
+@theme {
+  /* カラー：Primary(鉄色) / Secondary(オフホワイト) / Accent(深緑) */
+  --color-iron: #3a332c;
+  --color-iron-800: #453d34;
+  --color-iron-700: #524940;
+  --color-iron-600: #5c544a;
+  --color-iron-400: #8a8175;
+  --color-white-off: #f5f3ef;
+  --color-white-dim: #e5e1d9;
+  --color-white-soft: #faf8f5;
+  --color-green: #4b6b4f;
+  /* 明背景(white-off/white-soft)でのテキストはgreenをそのまま使える(実測5.39)。
+     暗背景(iron)ではgreenのコントラスト比が不足(実測2.08)するため、明るくしたgreen-softを使う(iron上で4.87)。
+     ③FORGE以降の標準方針：配色決定時点でコントラスト比を検証する。 */
+  --color-green-soft: #87ab8c;
+
+  /* タイポグラフィ：見出し・本文ともにNoto Sans JP一本(装飾的な見出しフォントは使わない) */
+  --font-sans-jp: var(--font-noto-sans-jp), sans-serif;
+
+  /* 余白：8pxグリッド基準、セクション間 96px(デスクトップ)/56px(モバイル) */
+  --spacing-section: 6rem;
+  --spacing-section-mobile: 3.5rem;
+
+  /* 機能的・実務的なテンポのイージング(装飾的な緩急は付けない) */
+  --ease-steady: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root {
+  --background: var(--color-white-off);
+  --foreground: var(--color-iron);
+}
+
+* {
+  border-color: var(--color-iron-600);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans-jp);
+}
+
+/* 全インタラクティブ要素のフォーカスリング */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
