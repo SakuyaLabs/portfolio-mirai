@@ -13,6 +13,7 @@ const notoSansJP = Noto_Sans_JP({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mirai.sakuyalabs.com"),
+  alternates: { canonical: "/" },
   title: {
     default: "株式会社ミライ工務店 | 新築・リフォームのご相談",
     template: "%s | 株式会社ミライ工務店",
